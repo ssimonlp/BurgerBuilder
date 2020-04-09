@@ -20,6 +20,7 @@ const buildControls = (props) => (
                 disabled={props.disabled[control.type]}
             />
         )}
+        <p className={classes.CurrentPrice}>Current price : {props.price}</p>
     </div>
 );
 
