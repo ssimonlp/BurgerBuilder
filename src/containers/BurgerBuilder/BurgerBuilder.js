@@ -33,7 +33,8 @@ class BurgerBuilder extends Component {
     }
 
     purchaseHandler = () => {
-        this.setState({purchasing: true})
+        const purchasing = !this.state.purchasing
+        this.setState({purchasing: purchasing})
     }
 
     addIngredientHandler = type => {
@@ -74,7 +75,10 @@ class BurgerBuilder extends Component {
         }
         return(
             <Aux>
-            <Modal show={this.state.purchasing}>
+            <Modal
+                show={this.state.purchasing}
+                dismiss={this.purchaseHandler}
+            >
                 <OrderSummary ingredients={this.state.ingredients} />
                 <p>Total price: {this.state.totalPrice}</p>
             </Modal>
