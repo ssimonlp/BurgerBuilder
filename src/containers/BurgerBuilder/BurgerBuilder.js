@@ -80,7 +80,6 @@ class BurgerBuilder extends Component {
                 dismiss={this.purchaseHandler}
             >
                 <OrderSummary ingredients={this.state.ingredients} />
-                <p>Total price: {this.state.totalPrice}</p>
             </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
