@@ -21,13 +21,19 @@ class BurgerBuilder extends Component {
             meat: 0
         },
         totalPrice: 4,
-        orderable: false
+        orderable: false,
+        purchasing: false
     }
+
     updateOrderableState = (ingredients) => {
         const quantities = Object.keys(ingredients)
             .map(ingredient => ingredients[ingredient])
             .reduce((acc, el) => acc + el, 0)
         this.setState({orderable: quantities > 0})
+    }
+
+    purchaseHandler = () => {
+        this.setState({purchasing: true})
     }
 
     addIngredientHandler = type => {
@@ -68,8 +74,9 @@ class BurgerBuilder extends Component {
         }
         return(
             <Aux>
-            <Modal>
+            <Modal show={this.state.purchasing}>
                 <OrderSummary ingredients={this.state.ingredients} />
+                <p>Total price: {this.state.totalPrice}</p>
             </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
@@ -78,6 +85,7 @@ class BurgerBuilder extends Component {
                     disabled={disabledInfos}
                     price={this.state.totalPrice}
                     orderable={this.state.orderable}
+                    purchasing={this.purchaseHandler}
                 />
             </Aux>
         );
