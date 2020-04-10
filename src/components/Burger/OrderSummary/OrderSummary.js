@@ -20,7 +20,18 @@ const orderSummary = props => {
             <ul>
                 {ingredientSummary}
             </ul>
-            <Button>Cancel</Button>
+            <Button
+                btnType='Danger'
+                click={props.clickCancel}
+            >
+                Cancel
+            </Button>
+            <Button
+                btnType='Success'
+                click={props.clickContinue}
+            >
+                Continue
+            </Button>
         </Aux>
     )
 }
