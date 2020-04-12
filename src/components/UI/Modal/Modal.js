@@ -20,6 +20,10 @@ const modal = props => (
         </div>
 
     </Aux>
-)
+);
 
-export default modal;
+const areEqual = (prevProps, nextProps) => (
+    prevProps.show === nextProps.show
+);
+
+export default React.memo(modal, areEqual);
