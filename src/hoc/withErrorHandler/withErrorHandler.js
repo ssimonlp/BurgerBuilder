@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 import Aux from '../Aux/Aux';
 
 const withErrorHandler = (WrappedComponent, axios) => {
-    let error = null;
+    const [error, setErrror] = useState(null);
 
     useEffect(() => {
+        setErrror(null);
         axios.interceptors.request.use(req => {
-            error = null;
+            setErrror(null);
             return req
         })
         axios.interceptors.response.use(null, responseError =>{
-            error = responseError;
+            setErrror(responseError);
         });
     }, []);
 
